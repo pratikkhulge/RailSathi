@@ -26,7 +26,7 @@ app.get('/pnr-status/:pnrNumber', async (req, res) => {
         method: 'GET',
         url: `https://pnr-status-indian-railway.p.rapidapi.com/pnr-check/${pnrNumber}`,
         headers: {
-            'X-RapidAPI-Key': 'e64f5729cfmsh59fed10fe812be4p12cd70jsna8568391b7bd',
+            'X-RapidAPI-Key': '{Your-API-Key}',
             'X-RapidAPI-Host': 'pnr-status-indian-railway.p.rapidapi.com'
         },
     };
