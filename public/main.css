@@ -1,0 +1,111 @@
+
+
+/* body {
+ background: rgb(231, 231, 231) no-repeat fixed;
+ background-size: cover;
+} */
+
+body {
+ background: url(images/vandebharat.webp) no-repeat fixed;
+ background-size: cover;
+}
+
+
+.nav-link {
+  margin-right: 40px;
+}
+
+.navbar {
+
+  background-color: #33477A;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+
+#bulletin {
+  margin: auto;
+  padding: 0;
+}
+
+marquee {
+  color: white;
+  background-color: #337AB7;
+  font-size: large;
+}
+
+.col,
+.col-lg-7,
+.col-lg-4 {
+  /* background-color: #ffffff; */
+
+  border: 1.6px solid #6d6d6d;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255);
+  /* border-radius: 12px; */
+  padding: 24px;
+  margin: 24px;
+
+}
+
+.col-lg-4 {
+  margin: 24px 24px 24px 0px;
+  align-content: center;
+}
+
+.col {
+  margin: 0px 24px;
+}
+
+.container {
+  max-width: 1100px;
+
+}
+
+.col-lg-4 .btn {
+  width: 180px;
+  margin: 5px;
+  color: rgb(255, 255, 255);
+
+  background-color: #33477A;
+
+}
+/* .logos{
+  margin: 0px 20px;
+} */
+
+/* -------------------------------------------- */
+.result-message {
+  font-size: 18px;
+  color: white;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+#loadingContainer {
+  color: white;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+#loadingContainer .spinner-border {
+  border-color: white;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+
+}
+
+.btn{
+  color: rgb(255, 255, 255);
+  background-color: #33477A;
+
+}
+
+
+.swap-button-col {
+  display: flex;
+  align-items: center;
+}
+
+.swap-button-col button {
+  margin-top: 8px; /* Adjust the top margin as needed */
+}

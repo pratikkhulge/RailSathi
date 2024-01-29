@@ -1,0 +1,260 @@
+{
+    "data": [
+        {
+            "id": 1875,
+            "trainNumber": "16031",
+            "trainName": "ANDAMAN EXPRESS",
+            "trainFullName": "Andaman Express (PT)",
+            "trainRunsOn": {
+                "sunday": true,
+                "monday": false,
+                "tueday": true,
+                "wednesday": true,
+                "thursday": true,
+                "friday": false,
+                "saturday": false
+            },
+            "availableClasses": [
+                "2A",
+                "3A",
+                "SL",
+                "GN"
+            ],
+            "boardingDisabled": false,
+            "hasPantry": false,
+            "trainType": "EXP",
+            "returnTrainNumber": "16032",
+            "stationFrom": {
+                "id": 18,
+                "srNo": 30,
+                "arrivalTime": "01:40:00",
+                "departureTime": "01:45:00",
+                "haltTime": "00:05:00",
+                "platform": "1",
+                "dayCount": 2,
+                "distance": "1113.2",
+                "speed": "61.0",
+                "boardingDisabled": 0,
+                "updatedAt": "2023-03-24T12:00:43.000Z",
+                "stationCode": "NGP",
+                "stationName": "Nagpur Junction"
+            },
+            "stationTo": {
+                "id": 657,
+                "srNo": 63,
+                "arrivalTime": "03:49:00",
+                "departureTime": "03:51:00",
+                "haltTime": "00:02:00",
+                "platform": "2",
+                "dayCount": 3,
+                "distance": "2570.7",
+                "speed": "74.1",
+                "boardingDisabled": 0,
+                "updatedAt": "2023-03-24T12:00:43.000Z",
+                "stationCode": "PGW",
+                "stationName": "Phagwara Junction"
+            },
+            "updatedAt": "2023-03-24T12:00:42.000Z",
+            "distance": 1457,
+            "duration": "26h 4m"
+        },
+        {
+            "id": 1931,
+            "trainNumber": "16317",
+            "trainName": "HIMSAGAR EXP",
+            "trainFullName": "Himsagar Express (PT)",
+            "trainRunsOn": {
+                "sunday": false,
+                "monday": false,
+                "tueday": false,
+                "wednesday": false,
+                "thursday": false,
+                "friday": true,
+                "saturday": false
+            },
+            "availableClasses": [
+                "2A",
+                "3A",
+                "SL",
+                "GN"
+            ],
+            "boardingDisabled": false,
+            "hasPantry": true,
+            "trainType": "EXP",
+            "returnTrainNumber": "16318",
+            "stationFrom": {
+                "id": 18,
+                "srNo": 34,
+                "arrivalTime": "01:40:00",
+                "departureTime": "01:45:00",
+                "haltTime": "00:05:00",
+                "platform": "1",
+                "dayCount": 3,
+                "distance": "2025.0",
+                "speed": "61.0",
+                "boardingDisabled": 0,
+                "updatedAt": "2023-03-24T12:00:43.000Z",
+                "stationCode": "NGP",
+                "stationName": "Nagpur Junction"
+            },
+            "stationTo": {
+                "id": 657,
+                "srNo": 58,
+                "arrivalTime": "03:49:00",
+                "departureTime": "03:51:00",
+                "haltTime": "00:02:00",
+                "platform": "2",
+                "dayCount": 4,
+                "distance": "3482.6",
+                "speed": "74.3",
+                "boardingDisabled": 0,
+                "updatedAt": "2023-03-24T12:00:43.000Z",
+                "stationCode": "PGW",
+                "stationName": "Phagwara Junction"
+            },
+            "updatedAt": "2023-03-24T12:00:42.000Z",
+            "distance": 1458,
+            "duration": "26h 4m"
+        },
+        {
+            "id": 2038,
+            "trainNumber": "16787",
+            "trainName": "TEN SVDK EXPRES",
+            "trainFullName": "Tirunelveli - Shri Mata Vaishno Devi Katra Express (PT)",
+            "trainRunsOn": {
+                "sunday": false,
+                "monday": true,
+                "tueday": false,
+                "wednesday": false,
+                "thursday": false,
+                "friday": false,
+                "saturday": false
+            },
+            "availableClasses": [
+                "2A",
+                "3A",
+                "SL",
+                "3E",
+                "GN"
+            ],
+            "boardingDisabled": false,
+            "hasPantry": false,
+            "trainType": "EXP",
+            "returnTrainNumber": "16788",
+            "stationFrom": {
+                "id": 18,
+                "srNo": 28,
+                "arrivalTime": "01:40:00",
+                "departureTime": "01:45:00",
+                "haltTime": "00:05:00",
+                "platform": "1",
+                "dayCount": 3,
+                "distance": "1869.4",
+                "speed": "61.0",
+                "boardingDisabled": 0,
+                "updatedAt": "2023-03-24T12:00:43.000Z",
+                "stationCode": "NGP",
+                "stationName": "Nagpur Junction"
+            },
+            "stationTo": {
+                "id": 657,
+                "srNo": 52,
+                "arrivalTime": "03:49:00",
+                "departureTime": "03:51:00",
+                "haltTime": "00:02:00",
+                "platform": "2",
+                "dayCount": 4,
+                "distance": "3327.0",
+                "speed": "74.3",
+                "boardingDisabled": 0,
+                "updatedAt": "2023-03-24T12:00:43.000Z",
+                "stationCode": "PGW",
+                "stationName": "Phagwara Junction"
+            },
+            "updatedAt": "2023-03-24T12:00:42.000Z",
+            "distance": 1458,
+            "duration": "26h 4m"
+        },
+        {
+            "id": 2265,
+            "trainNumber": "18237",
+            "trainName": "CHATTISGARH EXP",
+            "trainFullName": "Chhattisgarh Express (PT)",
+            "trainRunsOn": {
+                "sunday": true,
+                "monday": true,
+                "tueday": true,
+                "wednesday": true,
+                "thursday": true,
+                "friday": true,
+                "saturday": true
+            },
+            "availableClasses": [
+                "1A",
+                "2A",
+                "3A",
+                "SL",
+                "GN"
+            ],
+            "boardingDisabled": false,
+            "hasPantry": true,
+            "trainType": "EXP",
+            "returnTrainNumber": "18238",
+            "stationFrom": {
+                "id": 18,
+                "srNo": 26,
+                "arrivalTime": "22:00:00",
+                "departureTime": "22:20:00",
+                "haltTime": "00:20:00",
+                "platform": "3",
+                "dayCount": 1,
+                "distance": "502.0",
+                "speed": "20.5",
+                "boardingDisabled": 0,
+                "updatedAt": "2023-03-24T12:00:43.000Z",
+                "stationCode": "NGP",
+                "stationName": "Nagpur Junction"
+            },
+            "stationTo": {
+                "id": 657,
+                "srNo": 80,
+                "arrivalTime": "04:16:00",
+                "departureTime": "04:18:00",
+                "haltTime": "00:02:00",
+                "platform": "2",
+                "dayCount": 3,
+                "distance": "2002.3",
+                "speed": "79.4",
+                "boardingDisabled": 0,
+                "updatedAt": "2023-03-24T12:00:43.000Z",
+                "stationCode": "PGW",
+                "stationName": "Phagwara Junction"
+            },
+            "updatedAt": "2023-03-24T12:00:42.000Z",
+            "distance": 1500,
+            "duration": "29h 56m"
+        }
+    ],
+    "extra": {
+        "stationsInfo": [
+            {
+                "id": 18,
+                "stationCode": "NGP",
+                "stationName": "Nagpur Junction",
+                "stateName": "Maharashtra",
+                "zoneCode": "CR",
+                "stationType": "Junction",
+                "hindiStationName": "नागपुर जंक्शन"
+            },
+            {
+                "id": 657,
+                "stationCode": "PGW",
+                "stationName": "Phagwara Junction",
+                "stateName": "Punjab",
+                "zoneCode": "NR",
+                "stationType": "Junction",
+                "hindiStationName": "फगवारा जंक्शन"
+            }
+        ]
+    }
+}

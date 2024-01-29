@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+
+  <title>search</title>
+  <link rel="icon" type="image/png" href="images/rail-logo.png">
+</head>
+<script>
+  function checkSearchButton() {
+    var sourceStation = document.getElementById('sourceStation').value;
+    var destinationStation = document.getElementById('destinationStation').value;
+    var travelDate = document.getElementById('travelDate').value;
+    var sourceList = document.getElementById('sourceStationList');
+    var destinationList = document.getElementById('destinationStationList');
+
+    var searchButton = document.getElementById('button-addon2');
+    if (sourceStation && destinationStation && travelDate && !sourceList.hasChildNodes() && !destinationList.hasChildNodes()) {
+      searchButton.disabled = false;
+    } else {
+      searchButton.disabled = true;
+    }
+  }
+</script>
+<style>
+  .container {
+    border: 1.6px solid #6d6d6d;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+
+  #stationList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #stationList li {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin: 2px;
+  }
+
+  .input-group {
+    position: relative;
+  }
+
+  #sourceStationList,
+  #destinationStationList {
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .recent-search-section {
+    margin-top: 20px;
+    /* Add top margin to separate it from the search sections */
+    padding: 20px;
+    border: 1.6px solid #6d6d6d;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  #recentSearchList {
+    list-style: none;
+    padding: 0;
+  }
+
+  #recentSearchList li {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  /* Style the header of the recently searched section */
+  .recent-search-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">
+      <img src="images/rail-logo.png" width="55" height="55" class=" mx-2" alt="">
+      <strong>Indian Railways</strong>
+    </a>
+    <div class="collapse navbar-collapse justify-content-end ">
+
+      <a class="navbar-brand  mx-5" href="#">
+        <img src="images/azadi_logo.jpg" width="120" height="60" class=" " alt="">
+      </a>
+      <a class="navbar-brand  mx-5" href="#">
+        <img src="images/G20_Logo.png" width="120" height="60" class=" " alt="">
+      </a>
+
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end " id="navbarNavDropdown">
+      <ul class="navbar-nav ">
+        <li class="nav-item active">
+          <a class="nav-link" href="search.html">Home </a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-outline-light" onclick="largetext()">A+</button>
+              <button type="button" class="btn btn-outline-light" onclick="mediumtext()">A</button>
+              <button type="button" class="btn btn-outline-light" onclick="smalltext()">A-</button>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">हिन्दी</a>
+        </li>
+
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- bulletin -->
+  <div class="container-fluid" id="bulletin">
+    <div class=" breaking-news ">
+      <marquee class="news-scroll" behavior="scroll" direction="left">
+        Please help Indian railways and government of India in moving towards a digitized and cashless economy.
+        Eradicate black money. कृपया डिजिटल और कैशलेस अर्थव्यवस्था की ओर बढ़ने में भारतीय रेलवे और भारत सरकार की मदद
+        करें। काला धन ख़त्म करो.
+      </marquee>
+    </div>
+  </div>
+
+  <div class="container p-3">
+
+
+    <div id="accordion">
+      <div class="row p-4">
+        <div class="col-4">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                aria-controls="collapseOne">
+                Check PNR
+              </button>
+            </h5>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn  collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                aria-controls="collapseTwo">
+                Train Available
+              </button>
+            </h5>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn  collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                aria-controls="collapseThree">
+                Ticket Booking
+              </button>
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- PNR CHECK -->
+      <div class="card">
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <input type="text" id="pnrInput" class="form-control" placeholder="Enter PNR number"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary" onclick="Checkstatus()">Check Status</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIND TRAINS
+      <div class="card">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" aria-label="From" class="form-control" placeholder="From" id="sourceStation"
+                oninput="getStations('source')">
+              <ul id="sourceStationList"></ul>
+
+              <button class="btn" id="exchange">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5" />
+                </svg>
+              </button>
+
+              <input type="text" aria-label="To" class="form-control" placeholder="To" id="destinationStation"
+                oninput="getStations('destination')">
+              <ul id="destinationStationList"></ul>
+              <input type="date" class="form-control" id="travelDate">
+
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="searchTrains()">Search
+                Train</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ -->
+
+      <!-- FIND TRAINS -->
+      <div class="card">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-5 mb-3">
+                  <label for="sourceStation" class="form-label"><strong>From</strong> </label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="sourceStation" placeholder="Enter Start station"
+                      oninput="getStations('source');checkSearchButton()" required >
+                    <ul id="sourceStationList"></ul>
+                  </div>
+                </div>
+
+                <div class="col-md-2 mb-3 swap-button-col">
+                  <label class="invisible">Swap Button</label>
+                  <button class="btn btn-secondary btn-block" id="exchange">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="col-md-5 mb-3">
+                  <label for="destinationStation" class="form-label"><strong>To</strong> </label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="destinationStation" placeholder="Enter Destination"
+                    oninput="getStations('destination'); checkSearchButton()" required>
+                    <ul id="destinationStationList"></ul>
+                  </div>
+                </div>
+                <div class="col-">
+
+                  <input type="date" placeholder="dd-mm-yyyy" class="form-control" id="travelDate" oninput="checkSearchButton()" required>
+                </div>
+                <div class="col-md-12 text-center">
+                  <button   class="btn btn-secondary m-4" type="submit" id="button-addon2" onclick="searchTrains()">Search Train</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- EXTRA -->
+      <div class="card">
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+            Building 🛠️🛠️🛠️
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-content-center">
+      <!-- <div class="col-md-4">
+        <iframe name="f5b26f7f7b4578" width="300px" height="500px" data-testid="fb:like_box Facebook Social Plugin"
+          title="fb:like_box Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true"
+          scrolling="no" allow="encrypted-media"
+          src="https://www.facebook.com/v2.0/plugins/like_box.php?app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df1efada57722a8%26domain%3Dindianrailways.gov.in%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Findianrailways.gov.in%252Ff23dfe64920d668%26relation%3Dparent.parent&amp;color_scheme=light&amp;container_width=335&amp;header=true&amp;height=500&amp;href=https%3A%2F%2Fwww.facebook.com%2FRailMinIndia&amp;locale=en_US&amp;sdk=joey&amp;show_border=true&amp;show_faces=false&amp;stream=true&amp;width=300"
+          style=" visibility: visible; width: 300px; height: 500px;" class=""></iframe>
+      </div>
+      <div class="col-md-8">
+        <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"
+          class=""
+          style="position: static; visibility: visible; width: 508px; height: 500px; display: block; flex-grow: 1;"
+          title="Twitter Timeline"
+          src="https://syndication.twitter.com/srv/timeline-profile/screen-name/RailMinIndia?dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;maxHeight=500px&amp;origin=https%3A%2F%2Findianrailways.gov.in%2F&amp;sessionId=c3d1a1b21aa323e94db0cbbd4c06b738f85c5f40&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=2615f7e52b7e0%3A1702314776716"></iframe>
+
+      </div> -->
+      <!-- Existing content above -->
+
+      <!-- RECENTLY SEARCHED TRAINS -->
+<div class="card mt-4">
+  <div class="card-body">
+    <h6 class="card-title">Recently Searched Trains</h6>
+    <div class="d-flex align-items-center">
+      <div class="recent-search-icon bg-secondary text-light mr-2">
+        <!-- You can customize the content or icon inside this div -->
+        <i class="fas fa-search"></i>
+      </div>
+      <p class="mb-0">Your most recent train search goes here.</p>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Existing content below -->
+
+    </div>
+</body>
+<script src="text.js"></script>
+<script src="search.js"></script>
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<!-- <script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script> -->
+<!-- <script>
+  function encryptData(data) {
+    var key = CryptoJS.enc.Utf8.parse('etbc76358OMg7fgm456dsSFG');
+    var encrypted = CryptoJS.AES.encrypt(data, key, { mode: CryptoJS.mode.ECB });
+    return encrypted.toString();
+  }
+  function extractStationCode(input) {
+    var match = /\(([^)]+)\)/.exec(input);
+    return match ? match[1] : null;
+  }
+
+  function searchTrains() {
+    var fromInput = document.getElementById('sourceStation').value;
+    var toInput = document.getElementById('destinationStation').value;
+    var travelDate = document.getElementById('travelDate').value;
+    var fromStationCode = extractStationCode(fromInput);
+    var toStationCode = extractStationCode(toInput);
+
+    var encryptedFrom = encryptData(fromStationCode);
+    var encryptedTo = encryptData(toStationCode);
+    var encryptedDate = encryptData(travelDate);
+    var redirectUrl = 'findtrain.html?from=' + encodeURIComponent(encryptedFrom) +
+      '&to=' + encodeURIComponent(encryptedTo) +
+      '&date=' + encodeURIComponent(encryptedDate);
+
+    window.location.href = redirectUrl;
+  }
+
+</script> -->
+
+</body>
+
+</html>
